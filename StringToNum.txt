@@ -1,0 +1,51 @@
+0
+Answers
+Write a function to return string when passed integer . Note : do not use tostring() in built function.
+
+
+#include <iostream>
+#include <stdio.h>
+#include <string>
+#include<vector>
+#include<stack>
+using namespace std;
+
+stack<int> getDigits(int b)
+{
+	stack<int> digits;
+	int x, digit;
+	int a = b;
+	while (a > 10)
+	{
+		x = (a / 10);
+		digit = a - (x * 10);
+		digits.push(digit);
+		a = x;
+	}
+	digits.push(a);
+	return digits;
+}
+
+
+string NumToString(int a)
+{
+	string s;
+	stack<int> digits = getDigits(a);
+	int size = digits.size();
+	for (int i = 0; i < size; i++)
+	{
+		int num = digits.top();
+		s.push_back(num +48);
+		digits.pop();
+	}
+	return s;
+}
+
+int main()
+{
+	int a = 123;
+	char c = '1';
+	int d = int(c);
+	string s = NumToString(a);
+	cout << s;
+ }
